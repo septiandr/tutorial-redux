@@ -1,13 +1,42 @@
-import React from 'react'
-import { useSelector } from 'react-redux';
+import React, {useEffect} from 'react'
+import { useSelector, useDispatch } from 'react-redux';
+import { getProducts, productSelector, deleteProducts } from '../feature/productSlice';
+import { Link } from 'react-router-dom';
 
 const ShowProduct = () => {
-    const { title, price} = useSelector(state => state.product);
+    const dispatch = useDispatch();
+    const products = useSelector(productSelector.selectAll)
+
+    useEffect(()=>{
+        dispatch(getProducts())
+    },[dispatch])
 
   return (
     <div className='box mt-5'>
-        <h4 className='title is-4'>Title: {title}</h4>
-        <h4 className='title is-4'>Price: {price}</h4>
+        <Link to = "add" className='button is-success'>Add New</Link>
+        <table style={{width:"100%"}} className='table is-striped is-fulwidth'>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {products.map((product, index)=> (
+                <tr key ={product.id}>
+                    <td>{index+1}</td>
+                    <td>{product.title}</td>
+                    <td>{product.price}</td>
+                    <td>
+                        <Link to = {`edit/${product.id}`} className='button is-info is-small'>Edit</Link>
+                        <button style={{marginLeft: "20px"}} onClick={ ()=> dispatch(deleteProducts(product.id))} className='button is-danger is-small'>Delete</button>
+                    </td>
+                </tr>
+                ))}
+            </tbody>
+        </table>
     </div>
   )
 }

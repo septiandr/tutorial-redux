@@ -1,9 +1,34 @@
 {
-    "products": [
-        {"id": 1, "title" : "Product 1", "price": 10000},
-        {"id": 2, "title" : "Product 1", "price": 12000},
-        {"id": 3, "title" : "Product 1", "price": 13000},
-        {"id": 4, "title" : "Product 1", "price": 14000},
-        {"id": 5, "title" : "Product 1", "price": 15000}
-    ]
+  "products": [
+    {
+      "id": 1,
+      "title": "Naruto",
+      "price": 10000
+    },
+    {
+      "id": 2,
+      "title": "Luffy",
+      "price": 12000
+    },
+    {
+      "title": "Messi",
+      "price": 50000,
+      "id": 3
+    },
+    {
+      "id": 4,
+      "title": "Saitama",
+      "price": 14000
+    },
+    {
+      "id": 5,
+      "title": "Deku",
+      "price": 15000
+    },
+    {
+      "title": "Ichigo",
+      "price": "15000",
+      "id": 6
+    }
+  ]
 }
